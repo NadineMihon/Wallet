@@ -1,10 +1,21 @@
 import * as SC from "./styles";
 
-export const Select = () => (
-    <SC.Select>
-        <SC.Option>RUB</SC.Option>
-        <SC.Option>EUR</SC.Option>
-        <SC.Option>USD</SC.Option>
-        <SC.Option>CNY</SC.Option>
-    </SC.Select>
-)
+export const Select = ({ name, value, onChange, accounts }) => {
+
+    return (
+        <SC.Select 
+            onChange={(e) => onChange(e.target.name, e.target.value)}
+            name={name}
+            value={value}
+        >
+            {
+                accounts.map((account) => <SC.Option 
+                    value={account.currency}
+                    key={account.id}
+                >
+                    {account.currency}
+                </SC.Option>)
+            }
+        </SC.Select>
+    )
+};

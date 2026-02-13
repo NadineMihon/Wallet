@@ -8,7 +8,7 @@ import { Button } from "../ui/Button";
 
 import * as SC from "./styles";
 
-export const Exchange = () => {
+export const Exchange = ({ accounts }) => {
     const onSubmit = (e) => {
         e.preventDefault();
         console.log('Обмен');
@@ -26,11 +26,11 @@ export const Exchange = () => {
                     </Field>
                     <Field>
                         <Input id="fromAmount" name="fromAmount" type="number"  placeholder="100"/>
-                        <Select />      
+                        <Select accounts={accounts} />      
                     </Field>
                     <Field>
                        <Typo>Обменять на:</Typo>
-                       <Select /> 
+                       <Select accounts={accounts}/> 
                     </Field>
                     <SC.ButtonWrapper>
                         <Button type="submit">Обменять</Button>    

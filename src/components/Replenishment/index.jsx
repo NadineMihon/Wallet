@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Card } from "../ui/Card";
 import { Field } from "../ui/Field";
 import { Form } from "../ui/Form";
@@ -8,11 +9,22 @@ import { Button } from "../ui/Button";
 
 import * as SC from "./styles";
 
-export const Replenishment = () => {
+export const Replenishment = ({ accounts, topUpAccount }) => {
+    const initialValues = { amount: '', currency: 'RUB', };
+
+    const [formValues, setFormValues] = useState(initialValues);
+
+    const onChange = (name, value) =>{
+        setFormValues({ ...formValues, [name]: value });
+    };
+
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log('Пополнение');
+        topUpAccount(formValues);
+        setFormValues(initialValues);
     };
+
+    const disabled = !formValues.amount || !formValues.currency;
 
     return (
         <Card>
@@ -25,14 +37,26 @@ export const Replenishment = () => {
                         </SC.Label>                    
                     </Field>
                     <Field>
-                        <Input id="amount" name="amount" type="number"  placeholder="100"/>
-                        <Select />      
+                        <Input 
+                            id="amount" 
+                            name="amount" 
+                            type="number"  
+                            placeholder="100"
+                            value={formValues.amount}
+                            onChange={(e) => onChange(e.target.name, e.target.value)}
+                        />
+                        <Select 
+                            name={"currency"} 
+                            value={formValues.currency}
+                            onChange={onChange}
+                            accounts={accounts}
+                        />      
                     </Field>
                     <SC.ButtonWrapper>
-                        <Button type="submit">Пополнить</Button>    
+                        <Button type="submit" disabled={disabled}>Пополнить</Button>    
                     </SC.ButtonWrapper>
                 </Form>    
             </SC.Replenishment>
         </Card>
     )
-}
+};

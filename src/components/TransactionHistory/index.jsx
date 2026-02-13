@@ -4,12 +4,12 @@ import { Transactions } from "./components/Transactions";
 
 import * as SC from "./styles";
 
-export const TransactionHistory = () => {
+export const TransactionHistory = ({ transactions }) => {
     return (
         <Card>
             <SC.TransactionHistoryWrapper>
                 <Typo variant='subtitle'>История операций</Typo>
-                <Transactions />  
+                <Transactions transactions={transactions} />  
             </SC.TransactionHistoryWrapper>
         </Card>
     )

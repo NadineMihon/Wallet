@@ -3,6 +3,9 @@ import styled from "styled-components";
 export const Typo = styled.p`
     margin: 0;
     text-align: left;
+    white-space: nowrap;
+    overflow: hidden;  
+    text-overflow: ellipsis;
 
     &[data-tone='muted'] {
         color: #78778B;
