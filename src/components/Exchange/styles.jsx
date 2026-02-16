@@ -14,5 +14,5 @@ export const ButtonWrapper = styled.div `
     justify-content: center;
 `
 export const Label = styled.label `
-    margin: 0 0 5px;
+    margin: 5px 0;
 `

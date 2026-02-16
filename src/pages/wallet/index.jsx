@@ -9,7 +9,7 @@ import { useWallet } from "../../hooks/useWallet";
 import * as SC from "./styles";
 
 export const WalletPage = () => {
-    const { accounts, transactions, topUpAccount } = useWallet();
+    const { accounts, transactions, topUpAccount, exchangeCurrency, getAmountTo } = useWallet();
 
     return (
         <Container>
@@ -22,7 +22,11 @@ export const WalletPage = () => {
                     </SC.MainArea>
                     <SC.AdditionalArea>
                         <Replenishment accounts={accounts} topUpAccount={topUpAccount} />
-                        <Exchange accounts={accounts}/>
+                        <Exchange 
+                            accounts={accounts} 
+                            exchangeCurrency={exchangeCurrency} 
+                            getAmountTo={getAmountTo}
+                        />
                     </SC.AdditionalArea>
                 </SC.WorkingArea>   
             </SC.WalletWrapper>
