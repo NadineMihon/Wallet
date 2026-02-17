@@ -17,4 +17,7 @@ export const AccountInfo = styled.div `
     flex-direction: column;
     gap: 5px;
     justify-content: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `

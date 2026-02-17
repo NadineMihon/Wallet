@@ -11,6 +11,8 @@ export const Typo = styled.p`
         color: #78778B;
     }
 
+    
+
     &[data-variant='title'] {
         font-size: 25px;
         font-weight: 600;
@@ -34,5 +36,9 @@ export const Typo = styled.p`
         font-weight: 400;
         line-height: 15px;
         color: #929EAE;
+    }
+
+    &[data-tone='error'] {
+        color: #E5363D;
     }
 `

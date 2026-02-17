@@ -21,8 +21,6 @@ export const Exchange = ({ accounts, exchangeCurrency, getAmountTo }) => {
     useEffect(() => {
         if (formValues.amountFrom <= maxAmount) {
             getAmountTo(formValues, setFormValues);    
-        } else if (formValues.amountFrom > maxAmount) {
-            alert('На счете недостаточно средств');
         }
     }, [formValues.amountFrom, formValues.currencyFrom, formValues.currencyTo])
 
@@ -70,9 +68,16 @@ export const Exchange = ({ accounts, exchangeCurrency, getAmountTo }) => {
                             onChange={onChange} 
                         />      
                     </Field>
+                    <SC.FieldError>
+                        {
+                            formValues.amountFrom > maxAmount && (
+                                <Typo data-tone='error' variant='caption'>Сумма превышает остаток на счете</Typo>    
+                            )
+                        }
+                    </SC.FieldError>
                     <Field>
                         <SC.Label htmlFor="amountTo">
-                            <Typo>Результат обмена</Typo>    
+                            <Typo>Результат обмена</Typo>          
                         </SC.Label>
                     </Field>
                     <Field>
